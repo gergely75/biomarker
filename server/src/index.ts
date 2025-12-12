@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors';
 import { Biomarker, Patient } from '../../types'
 
 import { AIService } from './services/ai-service';
@@ -20,11 +19,9 @@ const app = express();
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 
-app.use((req, res, next) => {  
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', '*');  
-  next();   
-});
+// CORS is handled by the reverse proxy (nginx/Apache)
+// Removing CORS middleware to avoid duplicate headers
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
