@@ -7,7 +7,6 @@ export default function Patients() {
 
     // read url from .env file
     const apiUrl = import.meta.env.VITE_SERVER_API_URL
-    console.log('API URL:', apiUrl)
     
     useEffect(() => {
         fetch(`${apiUrl}/api/patients`)

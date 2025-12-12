@@ -28,7 +28,6 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Biomarkers API Server' });
 });
@@ -82,7 +81,6 @@ app.post('/api/patients/:id/ai-insights', async (req: Request, res: Response) =>
     }
 
     // Get AI insights
-    console.log(`Generating AI insights for patient ${patientId}...`);
     const insights = await aiService.getInsights(patient, patientBiomarkers);
 
     res.json({ insights });
@@ -104,7 +102,6 @@ app.post('/api/chat', async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Invalid request: messages array required' });
     }
 
-    console.log('Processing chat message...');
     const response = await aiService.chat(messages);
 
     res.json({ response });

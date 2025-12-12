@@ -1,13 +1,7 @@
 import type { Biomarker } from "../../../types"
 import { Line } from "react-chartjs-2"
-import { useEffect } from "react"
 
 export default function LineChart({ title, biomarkers }: { title: string, biomarkers: Biomarker[] }) {
-
-    useEffect(() => {
-        console.log(title, biomarkers)
-    }, [biomarkers, title])
-    console.log(title, biomarkers)
 
     return (
         <>
