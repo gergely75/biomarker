@@ -4,27 +4,29 @@ import cors from 'cors';
 import { Biomarker, Patient } from '../../types'
 
 import { AIService } from './services/ai-service';
+import { MCPService } from './services/mcp-service';
 
 dotenv.config();
 
-// Initialize AI Service
+const patients: Patient[] = require('../data/seeder_patients.json');
+const biomarkers: Biomarker[] = require('../data/seeder_biomarkers.json');
+
+// Initialize services
 const aiService = new AIService();
+const mcpService = new MCPService(patients, biomarkers);
+aiService.setMCPService(mcpService);
 
 const app = express();
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 
 app.use((req, res, next) => {  
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', '*');  
   next();   
 });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-
-const patients: Patient[] = require('../data/seeder_patients.json');
-
-const biomarkers: Biomarker[] = require('../data/seeder_biomarkers.json');
 
 
 app.get('/', (req: Request, res: Response) => {
@@ -93,9 +95,30 @@ app.post('/api/patients/:id/ai-insights', async (req: Request, res: Response) =>
   }
 });
 
+// Chat endpoint with MCP tool integration
+app.post('/api/chat', async (req: Request, res: Response) => {
+  try {
+    const { messages } = req.body;
+    
+    if (!messages || !Array.isArray(messages)) {
+      return res.status(400).json({ error: 'Invalid request: messages array required' });
+    }
+
+    console.log('Processing chat message...');
+    const response = await aiService.chat(messages);
+
+    res.json({ response });
+  } catch (error: any) {
+    console.error('Chat Error:', error);
+    res.status(500).json({ 
+      error: 'Failed to process chat message',
+      message: error.message || 'Unknown error occurred'
+    });
+  }
+});
+
 // Start server
 app.listen(Number(PORT), String(HOST), () => {
   console.log(`Server is running on http://${HOST}:${PORT}`);
-  console.log(`CORS enabled for : ${process.env.FRONTEND_URL}`);
 });
 

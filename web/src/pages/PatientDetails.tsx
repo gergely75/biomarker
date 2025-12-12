@@ -2,16 +2,13 @@ import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import type { Patient, Biomarker, PatientResponse, BiomarkersResponse, BiomarkerStatus } from '../../../types'
 import { BiomarkerCategory } from '../../../types'
-
-import type { AIInsightsResponse } from '../../../types'
+import ChatWidget from '../components/ChatWidget'
 
 export default function PatientDetails() {
     const { id } = useParams()
     const [patient, setPatient] = useState<Patient | null>(null)
     const [biomarkers, setBiomarkers] = useState<Biomarker[]>([])
-    const [aiInsights, setAiInsights] = useState<string>('')
-    const [isLoadingInsights, setIsLoadingInsights] = useState(false)
-    const [insightsError, setInsightsError] = useState<string>('')
+    const [showChatWidget, setShowChatWidget] = useState(false)
 
     // read url from .env file
     const apiUrl = import.meta.env.VITE_SERVER_API_URL
@@ -54,40 +51,12 @@ export default function PatientDetails() {
             })
     }
 
-    const getAIInsights = async () => {
-        if (!id) return
-
-        setIsLoadingInsights(true)
-        setInsightsError('')
-
-        try {
-            const response = await fetch(`${apiUrl}/api/patients/${id}/ai-insights`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-
-            if (!response.ok) {
-                const errorData = await response.json()
-                throw new Error(errorData.message || 'Failed to generate insights')
-            }
-
-            const data: AIInsightsResponse = await response.json()
-            setAiInsights(data.insights)
-        } catch (error: any) {
-            console.error('Failed to get AI insights:', error)
-            setInsightsError(error.message || 'Failed to generate insights. Please try again.')
-        } finally {
-            setIsLoadingInsights(false)
-        }
-    }
-
     return (
-        <div>
-            <h2 className="mb-4">Patient Details</h2>
-            <div className="card">
-                <div className="card-body">
+        <>
+            <div>
+                <h2 className="mb-4">Patient Details</h2>
+                <div className="card">
+                    <div className="card-body">
                     {patient ? (
                         <>
                             <h5 className="card-title">{patient.name}</h5>
@@ -138,53 +107,28 @@ export default function PatientDetails() {
 
                                     <button
                                         className="btn btn-primary"
-                                        onClick={getAIInsights}
-                                        disabled={isLoadingInsights}
+                                        onClick={() => setShowChatWidget(true)}
                                     >
-                                        {isLoadingInsights ? (
-                                            <>
-                                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                                                Generating Insights...
-                                            </>
-                                        ) : (
-                                            <>
                                                 <i className="bi bi-magic me-2"></i>
                                                 Get AI Insights
-                                            </>
-                                        )}
                                     </button>
 
-                                    <div className="mt-3">
-                                        <h6>AI Insights</h6>
-                                        {insightsError && (
-                                            <div className="alert alert-danger" role="alert">
-                                                <i className="bi bi-exclamation-triangle me-2"></i>
-                                                {insightsError}
-                                            </div>
-                                        )}
-                                        {aiInsights ? (
-                                            <div className="card">
-                                                <div className="card-body text-start">
-                                                    <div style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>
-                                                        {aiInsights}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ) : !insightsError && (
-                                            <p className="text-muted">
-                                                <i className="bi bi-info-circle me-2"></i>
-                                                Click the button above to generate AI-powered health insights based on the biomarker results
-                                            </p>
-                                        )}
-                                    </div>
                                 </div>
                             )}
                         </>
                     ) : (
                         <p className="text-muted">Loading patient details...</p>
                     )}
+                    </div>
                 </div>
             </div>
-        </div>
+
+            {/* Floating Chat Widget - Only on Patient Details */}
+            <ChatWidget 
+                isOpen={showChatWidget} 
+                onToggle={() => setShowChatWidget(!showChatWidget)}
+                hideFloatingButton={true}
+            />
+        </>
     )
 }

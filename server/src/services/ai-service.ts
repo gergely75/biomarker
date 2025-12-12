@@ -1,8 +1,15 @@
 import OpenAI from "openai";
 import { Patient, Biomarker } from "../../../types";
+import { MCPService } from "./mcp-service";
+
+export interface ChatMessage {
+  role: "system" | "user" | "assistant";
+  content: string;
+}
 
 export class AIService {
   private client: OpenAI;
+  private mcpService: MCPService | null = null;
 
   constructor() {
     const apiKey = process.env.OPENAI_API_KEY;
@@ -14,6 +21,10 @@ export class AIService {
     this.client = new OpenAI({
       apiKey: apiKey,
     });
+  }
+
+  setMCPService(mcpService: MCPService) {
+    this.mcpService = mcpService;
   }
 
   async getInsights(
@@ -102,5 +113,202 @@ ${biomarkerSummary}
 
 Please provide a comprehensive health analysis based on these results.
     `.trim();
+  }
+
+  async chat(messages: ChatMessage[]): Promise<string> {
+    try {
+      if (!this.mcpService) {
+        throw new Error("MCP Service not initialized");
+      }
+
+      // Define the tools available to the AI
+      const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
+        {
+          type: "function",
+          function: {
+            name: "get_all_patients",
+            description: "Retrieve a list of all patients with their basic information",
+            parameters: {
+              type: "object",
+              properties: {},
+            },
+          },
+        },
+        {
+          type: "function",
+          function: {
+            name: "get_patient",
+            description: "Get detailed information about a specific patient by their ID",
+            parameters: {
+              type: "object",
+              properties: {
+                patient_id: {
+                  type: "number",
+                  description: "The unique identifier of the patient",
+                },
+              },
+              required: ["patient_id"],
+            },
+          },
+        },
+        {
+          type: "function",
+          function: {
+            name: "get_patient_biomarkers",
+            description: "Retrieve all biomarker measurements for a specific patient",
+            parameters: {
+              type: "object",
+              properties: {
+                patient_id: {
+                  type: "number",
+                  description: "The unique identifier of the patient",
+                },
+                category: {
+                  type: "string",
+                  description: "Optional: Filter by category (metabolic, cardiovascular, hormonal)",
+                  enum: ["metabolic", "cardiovascular", "hormonal"],
+                },
+              },
+              required: ["patient_id"],
+            },
+          },
+        },
+        {
+          type: "function",
+          function: {
+            name: "search_patients",
+            description: "Search for patients by name",
+            parameters: {
+              type: "object",
+              properties: {
+                query: {
+                  type: "string",
+                  description: "Search query to match against patient names",
+                },
+              },
+              required: ["query"],
+            },
+          },
+        },
+        {
+          type: "function",
+          function: {
+            name: "analyze_biomarker_trends",
+            description: "Analyze biomarker trends and identify abnormal values for a patient",
+            parameters: {
+              type: "object",
+              properties: {
+                patient_id: {
+                  type: "number",
+                  description: "The unique identifier of the patient",
+                },
+              },
+              required: ["patient_id"],
+            },
+          },
+        },
+      ];
+
+      const systemMessage: OpenAI.Chat.Completions.ChatCompletionMessageParam =
+        {
+          role: "system",
+          content: `You are a medical AI assistant with access to patient biomarker data. 
+You can help users:
+- Find and list patients
+- View patient information and biomarker results
+- Analyze biomarker trends
+- Provide health insights based on biomarker data
+
+Use the available tools to fetch data when needed. Be professional, informative, and helpful.
+Always include relevant details from the data when providing analysis.
+
+When discussing biomarker results:
+- Explain what abnormal values might indicate
+- Provide context about reference ranges
+- Suggest potential follow-up actions
+
+Add appropriate medical disclaimers when providing health advice.`,
+        };
+
+      const chatMessages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] =
+        [systemMessage, ...messages];
+
+      let response = await this.client.chat.completions.create({
+        model: "gpt-4o",
+        messages: chatMessages,
+        tools: tools,
+        tool_choice: "auto",
+        temperature: 0.7,
+      });
+
+      // Handle tool calls
+      let iterations = 0;
+      const maxIterations = 5;
+
+      while (
+        response.choices[0].message.tool_calls &&
+        iterations < maxIterations
+      ) {
+        iterations++;
+
+        const assistantMessage = response.choices[0].message;
+        chatMessages.push(assistantMessage);
+
+        // Execute each tool call
+        if (assistantMessage.tool_calls) {
+          for (const toolCall of assistantMessage.tool_calls) {
+            if (toolCall.type !== 'function') continue;
+            
+            const functionName = toolCall.function.name;
+            const functionArgs = JSON.parse(toolCall.function.arguments);
+
+          console.log(
+            `Executing MCP tool: ${functionName} with args:`,
+            functionArgs
+          );
+
+          try {
+            const result = await this.mcpService.executeTool(
+              functionName,
+              functionArgs
+            );
+            const resultText =
+              result.content[0]?.text || JSON.stringify(result);
+
+            chatMessages.push({
+              role: "tool",
+              tool_call_id: toolCall.id,
+              content: resultText,
+            });
+          } catch (error: any) {
+            chatMessages.push({
+              role: "tool",
+              tool_call_id: toolCall.id,
+              content: `Error: ${error.message}`,
+            });
+          }
+        }
+        }
+
+        // Get next response from AI
+        response = await this.client.chat.completions.create({
+          model: "gpt-4o",
+          messages: chatMessages,
+          tools: tools,
+          tool_choice: "auto",
+          temperature: 0.7,
+        });
+      }
+
+      return (
+        response.choices[0].message.content ||
+        "I apologize, but I couldn't generate a response."
+      );
+    } catch (error) {
+      console.error("Chat Error:", error);
+      throw new Error(
+        "Failed to process chat message. Please check your API key and try again."
+      );
+    }
   }
 }
