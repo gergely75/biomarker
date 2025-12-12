@@ -55,6 +55,116 @@
     "status": "normal"
   },
   {
+    "id": 26,
+    "patientId": 1,
+    "name": "HDL Cholesterol",
+    "value": 45,
+    "unit": "mg/dL",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 40, "max": 100 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 27,
+    "patientId": 1,
+    "name": "Triglycerides",
+    "value": 165,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 0, "max": 150 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "high"
+  },
+  {
+    "id": 28,
+    "patientId": 1,
+    "name": "Creatinine",
+    "value": 1.1,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 0.7, "max": 1.3 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 29,
+    "patientId": 1,
+    "name": "BUN",
+    "value": 18,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 20 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 30,
+    "patientId": 1,
+    "name": "CRP",
+    "value": 3.8,
+    "unit": "mg/L",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 0, "max": 3.0 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "high"
+  },
+  {
+    "id": 31,
+    "patientId": 1,
+    "name": "Vitamin D",
+    "value": 28,
+    "unit": "ng/mL",
+    "category": "hormonal",
+    "referenceRange": { "min": 30, "max": 100 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "low"
+  },
+  {
+    "id": 32,
+    "patientId": 1,
+    "name": "ALT",
+    "value": 35,
+    "unit": "U/L",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 56 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 33,
+    "patientId": 1,
+    "name": "AST",
+    "value": 32,
+    "unit": "U/L",
+    "category": "metabolic",
+    "referenceRange": { "min": 10, "max": 40 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 34,
+    "patientId": 1,
+    "name": "Cortisol",
+    "value": 15,
+    "unit": "μg/dL",
+    "category": "hormonal",
+    "referenceRange": { "min": 6, "max": 23 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 35,
+    "patientId": 1,
+    "name": "Homocysteine",
+    "value": 14,
+    "unit": "μmol/L",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 5, "max": 15 },
+    "measuredAt": "2024-12-01T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
     "id": 6,
     "patientId": 2,
     "name": "Glucose",
@@ -99,7 +209,7 @@
     "status": "normal"
   },
   {
-    "id": "10",
+    "id": 10,
     "patientId": 2,
     "name": "Estradiol",
     "value": 125,
@@ -110,7 +220,117 @@
     "status": "normal"
   },
   {
-    "id": "11",
+    "id": 36,
+    "patientId": 2,
+    "name": "LDL Cholesterol",
+    "value": 95,
+    "unit": "mg/dL",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 0, "max": 100 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 37,
+    "patientId": 2,
+    "name": "Triglycerides",
+    "value": 120,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 0, "max": 150 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 38,
+    "patientId": 2,
+    "name": "TSH",
+    "value": 1.8,
+    "unit": "mIU/L",
+    "category": "hormonal",
+    "referenceRange": { "min": 0.4, "max": 4.0 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 39,
+    "patientId": 2,
+    "name": "Creatinine",
+    "value": 0.9,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 0.7, "max": 1.3 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 40,
+    "patientId": 2,
+    "name": "CRP",
+    "value": 0.8,
+    "unit": "mg/L",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 0, "max": 3.0 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 41,
+    "patientId": 2,
+    "name": "Vitamin D",
+    "value": 45,
+    "unit": "ng/mL",
+    "category": "hormonal",
+    "referenceRange": { "min": 30, "max": 100 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 42,
+    "patientId": 2,
+    "name": "ALT",
+    "value": 22,
+    "unit": "U/L",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 56 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 43,
+    "patientId": 2,
+    "name": "BUN",
+    "value": 14,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 20 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 44,
+    "patientId": 2,
+    "name": "Cortisol",
+    "value": 12,
+    "unit": "μg/dL",
+    "category": "hormonal",
+    "referenceRange": { "min": 6, "max": 23 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 45,
+    "patientId": 2,
+    "name": "Insulin",
+    "value": 8,
+    "unit": "μU/mL",
+    "category": "metabolic",
+    "referenceRange": { "min": 2.6, "max": 24.9 },
+    "measuredAt": "2024-11-28T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 11,
     "patientId": 3,
     "name": "Glucose",
     "value": 92,
@@ -121,7 +341,7 @@
     "status": "normal"
   },
   {
-    "id": "12",
+    "id": 12,
     "patientId": 3,
     "name": "Triglycerides",
     "value": 145,
@@ -132,7 +352,7 @@
     "status": "normal"
   },
   {
-    "id": "13",
+    "id": 13,
     "patientId": 3,
     "name": "Total Cholesterol",
     "value": 160,
@@ -143,7 +363,7 @@
     "status": "normal"
   },
   {
-    "id": "14",
+    "id": 14,
     "patientId": 3,
     "name": "CRP",
     "value": 1.2,
@@ -154,7 +374,7 @@
     "status": "normal"
   },
   {
-    "id": "15",
+    "id": 15,
     "patientId": 3,
     "name": "Testosterone",
     "value": 550,
@@ -165,7 +385,117 @@
     "status": "normal"
   },
   {
-    "id": "16",
+    "id": 46,
+    "patientId": 3,
+    "name": "HbA1c",
+    "value": 5.3,
+    "unit": "%",
+    "category": "metabolic",
+    "referenceRange": { "min": 4.0, "max": 5.6 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 47,
+    "patientId": 3,
+    "name": "LDL Cholesterol",
+    "value": 88,
+    "unit": "mg/dL",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 0, "max": 100 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 48,
+    "patientId": 3,
+    "name": "HDL Cholesterol",
+    "value": 58,
+    "unit": "mg/dL",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 40, "max": 100 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 49,
+    "patientId": 3,
+    "name": "TSH",
+    "value": 2.1,
+    "unit": "mIU/L",
+    "category": "hormonal",
+    "referenceRange": { "min": 0.4, "max": 4.0 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 50,
+    "patientId": 3,
+    "name": "Creatinine",
+    "value": 1.0,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 0.7, "max": 1.3 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 51,
+    "patientId": 3,
+    "name": "BUN",
+    "value": 15,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 20 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 52,
+    "patientId": 3,
+    "name": "Vitamin D",
+    "value": 52,
+    "unit": "ng/mL",
+    "category": "hormonal",
+    "referenceRange": { "min": 30, "max": 100 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 53,
+    "patientId": 3,
+    "name": "ALT",
+    "value": 28,
+    "unit": "U/L",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 56 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 54,
+    "patientId": 3,
+    "name": "Cortisol",
+    "value": 14,
+    "unit": "μg/dL",
+    "category": "hormonal",
+    "referenceRange": { "min": 6, "max": 23 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 55,
+    "patientId": 3,
+    "name": "Insulin",
+    "value": 10,
+    "unit": "μU/mL",
+    "category": "metabolic",
+    "referenceRange": { "min": 2.6, "max": 24.9 },
+    "measuredAt": "2024-12-05T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 16,
     "patientId": 4,
     "name": "Glucose",
     "value": 68,
@@ -176,7 +506,7 @@
     "status": "low"
   },
   {
-    "id": "17",
+    "id": 17,
     "patientId": 4,
     "name": "HbA1c",
     "value": 5.0,
@@ -187,7 +517,7 @@
     "status": "normal"
   },
   {
-    "id": "18",
+    "id": 18,
     "patientId": 4,
     "name": "Total Cholesterol",
     "value": 245,
@@ -198,7 +528,7 @@
     "status": "high"
   },
   {
-    "id": "19",
+    "id": 19,
     "patientId": 4,
     "name": "LDL Cholesterol",
     "value": 165,
@@ -209,7 +539,7 @@
     "status": "high"
   },
   {
-    "id": "20",
+    "id": 20,
     "patientId": 4,
     "name": "TSH",
     "value": 5.5,
@@ -220,7 +550,117 @@
     "status": "high"
   },
   {
-    "id": "21",
+    "id": 56,
+    "patientId": 4,
+    "name": "HDL Cholesterol",
+    "value": 38,
+    "unit": "mg/dL",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 40, "max": 100 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "low"
+  },
+  {
+    "id": 57,
+    "patientId": 4,
+    "name": "Triglycerides",
+    "value": 210,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 0, "max": 150 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "high"
+  },
+  {
+    "id": 58,
+    "patientId": 4,
+    "name": "Creatinine",
+    "value": 1.2,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 0.7, "max": 1.3 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 59,
+    "patientId": 4,
+    "name": "CRP",
+    "value": 4.2,
+    "unit": "mg/L",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 0, "max": 3.0 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "high"
+  },
+  {
+    "id": 60,
+    "patientId": 4,
+    "name": "Vitamin D",
+    "value": 22,
+    "unit": "ng/mL",
+    "category": "hormonal",
+    "referenceRange": { "min": 30, "max": 100 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "low"
+  },
+  {
+    "id": 61,
+    "patientId": 4,
+    "name": "BUN",
+    "value": 24,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 20 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "high"
+  },
+  {
+    "id": 62,
+    "patientId": 4,
+    "name": "ALT",
+    "value": 48,
+    "unit": "U/L",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 56 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 63,
+    "patientId": 4,
+    "name": "Estradiol",
+    "value": 45,
+    "unit": "pg/mL",
+    "category": "hormonal",
+    "referenceRange": { "min": 30, "max": 400 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 64,
+    "patientId": 4,
+    "name": "Cortisol",
+    "value": 22,
+    "unit": "μg/dL",
+    "category": "hormonal",
+    "referenceRange": { "min": 6, "max": 23 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 65,
+    "patientId": 4,
+    "name": "Homocysteine",
+    "value": 18,
+    "unit": "μmol/L",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 5, "max": 15 },
+    "measuredAt": "2024-12-10T00:00:00.000Z",
+    "status": "high"
+  },
+  {
+    "id": 21,
     "patientId": 5,
     "name": "Glucose",
     "value": 118,
@@ -231,7 +671,7 @@
     "status": "high"
   },
   {
-    "id": "22",
+    "id": 22,
     "patientId": 5,
     "name": "HbA1c",
     "value": 6.2,
@@ -242,7 +682,7 @@
     "status": "high"
   },
   {
-    "id": "23",
+    "id": 23,
     "patientId": 5,
     "name": "Total Cholesterol",
     "value": 195,
@@ -253,7 +693,7 @@
     "status": "normal"
   },
   {
-    "id": "24",
+    "id": 24,
     "patientId": 5,
     "name": "Triglycerides",
     "value": 185,
@@ -264,13 +704,123 @@
     "status": "high"
   },
   {
-    "id": "25",
+    "id": 25,
     "patientId": 5,
     "name": "Cortisol",
     "value": 18,
     "unit": "μg/dL",
     "category": "hormonal",
     "referenceRange": { "min": 6, "max": 23 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 66,
+    "patientId": 5,
+    "name": "LDL Cholesterol",
+    "value": 125,
+    "unit": "mg/dL",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 0, "max": 100 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "high"
+  },
+  {
+    "id": 67,
+    "patientId": 5,
+    "name": "HDL Cholesterol",
+    "value": 42,
+    "unit": "mg/dL",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 40, "max": 100 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 68,
+    "patientId": 5,
+    "name": "TSH",
+    "value": 3.2,
+    "unit": "mIU/L",
+    "category": "hormonal",
+    "referenceRange": { "min": 0.4, "max": 4.0 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 69,
+    "patientId": 5,
+    "name": "Creatinine",
+    "value": 1.3,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 0.7, "max": 1.3 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 70,
+    "patientId": 5,
+    "name": "CRP",
+    "value": 2.8,
+    "unit": "mg/L",
+    "category": "cardiovascular",
+    "referenceRange": { "min": 0, "max": 3.0 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 71,
+    "patientId": 5,
+    "name": "Vitamin D",
+    "value": 35,
+    "unit": "ng/mL",
+    "category": "hormonal",
+    "referenceRange": { "min": 30, "max": 100 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 72,
+    "patientId": 5,
+    "name": "BUN",
+    "value": 21,
+    "unit": "mg/dL",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 20 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "high"
+  },
+  {
+    "id": 73,
+    "patientId": 5,
+    "name": "ALT",
+    "value": 42,
+    "unit": "U/L",
+    "category": "metabolic",
+    "referenceRange": { "min": 7, "max": 56 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 74,
+    "patientId": 5,
+    "name": "Testosterone",
+    "value": 420,
+    "unit": "ng/dL",
+    "category": "hormonal",
+    "referenceRange": { "min": 300, "max": 1000 },
+    "measuredAt": "2024-12-08T00:00:00.000Z",
+    "status": "normal"
+  },
+  {
+    "id": 75,
+    "patientId": 5,
+    "name": "Insulin",
+    "value": 18,
+    "unit": "μU/mL",
+    "category": "metabolic",
+    "referenceRange": { "min": 2.6, "max": 24.9 },
     "measuredAt": "2024-12-08T00:00:00.000Z",
     "status": "normal"
   }
