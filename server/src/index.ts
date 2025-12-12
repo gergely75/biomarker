@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { Biomarker, Patient } from '../../types'
 
 dotenv.config();
 
@@ -11,30 +12,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const BiomarkerCategories = ['metabolic', 'cardiovascular', 'hormonal'];
-
-interface Patient {
-  id: number;
-  name: string;
-  dateOfBirth: Date;
-  lastVisit: string;
-}
-
-interface Biomarker {
-  id: number;
-  patientId: number;
-  name: string;
-  value: number;
-  unit: string;
-  category: typeof BiomarkerCategories[number];
-  referenceRange: {
-    min: number;
-    max: number;
-  }, 
-  measuredAt: Date;
-  status: 'normal' | 'high' | 'low';
-}
 
 
 const patients: Patient[] = require('../data/seeder_patients.json');

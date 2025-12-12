@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
-import type { Biomarker, BiomarkersResponse, Patient, PatientResponse } from "../types"
+import type { Biomarker, BiomarkersResponse, Patient, PatientResponse } from "../../../types"
 import { useParams } from "react-router-dom"
-import LineChart from "../components/LineChart"
 
 export default function BiomarkersChart() {
     const { id, biomarker } = useParams()

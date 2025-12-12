@@ -1,4 +1,4 @@
-import type { Biomarker } from "../types"
+import type { Biomarker } from "../../../types"
 import { Line } from "react-chartjs-2"
 import { useEffect } from "react"
 

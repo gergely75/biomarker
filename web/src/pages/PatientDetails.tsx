@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import type { Patient, Biomarker, PatientResponse, BiomarkersResponse, BiomarkerStatus } from '../types'
-import { BiomarkerCategory } from '../types'
+import type { Patient, Biomarker, PatientResponse, BiomarkersResponse, BiomarkerStatus } from '../../../types'
+import { BiomarkerCategory } from '../../../types'
 
 export default function PatientDetails() {
   const { id } = useParams()
