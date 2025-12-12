@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import cors from 'cors';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { Biomarker, Patient } from '../../types'
 
 import { AIService } from './services/ai-service';
@@ -11,10 +11,13 @@ dotenv.config();
 const aiService = new AIService();
 
 const app = express();
+const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+app.use((req, res, next) => {  
+  res.setHeader('Access-Control-Allow-Headers', '*');  
+  next();   
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -91,7 +94,8 @@ app.post('/api/patients/:id/ai-insights', async (req: Request, res: Response) =>
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(Number(PORT), String(HOST), () => {
+  console.log(`Server is running on http://${HOST}:${PORT}`);
+  console.log(`CORS enabled for : ${process.env.FRONTEND_URL}`);
 });
 
