@@ -41,10 +41,12 @@ export default function BiomarkersChart() {
             ) : (
                 <p>Loading patient...</p>
             )}
-            {biomarkerName && (
+            {biomarkerName && biomarkers.length > 0 && (
                 <div>
                     <h3>{biomarkerName.charAt(0).toUpperCase() + biomarkerName.slice(1)}</h3>
-                    
+                    {biomarkers.length === 0 && (
+                        <p>No biomarkers found</p>
+                    )}
                 </div>
             )}
         </div>

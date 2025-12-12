@@ -41,3 +41,7 @@ export interface BiomarkersResponse {
   biomarkers: Biomarker[]
 }
 
+export interface AIInsightsResponse {
+  insights: string
+}
+

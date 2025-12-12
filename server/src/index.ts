@@ -3,7 +3,12 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { Biomarker, Patient } from '../../types'
 
+import { AIService } from './services/ai-service';
+
 dotenv.config();
+
+// Initialize AI Service
+const aiService = new AIService();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -51,6 +56,38 @@ app.get('/api/patients/:id/biomarkers', (req: Request, res: Response) => {
   }
   
   res.json({ biomarkers: patientBiomarkers });
+});
+
+// Get AI insights for a patient
+app.post('/api/patients/:id/ai-insights', async (req: Request, res: Response) => {
+  try {
+    const patientId = parseInt(req.params.id);
+    
+    // Get patient data
+    const patient = patients.find(p => p.id === patientId);
+    if (!patient) {
+      return res.status(404).json({ error: 'Patient not found' });
+    }
+
+    // Get biomarkers
+    const patientBiomarkers = biomarkers.filter(b => b.patientId === patientId);
+    
+    if (patientBiomarkers.length === 0) {
+      return res.status(400).json({ error: 'No biomarkers found for this patient' });
+    }
+
+    // Get AI insights
+    console.log(`Generating AI insights for patient ${patientId}...`);
+    const insights = await aiService.getInsights(patient, patientBiomarkers);
+
+    res.json({ insights });
+  } catch (error: any) {
+    console.error('AI Insights Error:', error);
+    res.status(500).json({ 
+      error: 'Failed to generate insights',
+      message: error.message || 'Unknown error occurred'
+    });
+  }
 });
 
 // Start server
